@@ -47,5 +47,7 @@ Gardez en tête que l'application développée doit être simple d'utilisation, 
 
 Pour finir, une documentation technique devra être livrée afin que la DSI puisse mettre sur un serveur de préproduction votre projet, à moins que vous le le déployiez vous même.
 
-**Bon courage !**
+**Pour toute question à propos de ce cahier des charges, vous êtes invité à créer une issue sur Github**
+
+*Bon courage !*
 
