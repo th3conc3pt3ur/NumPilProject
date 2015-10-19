@@ -55,12 +55,21 @@ class Vol
     public function addPassager(User $passager)
     {
         $this->passagers[] = $passager;
-        return this;
+        return $this;
     }
     public function removePassager(User $passager){
         $this->passagers->removeElement($passager);
     }
+    public function getNbPlaceRestantes()
+    {
+        if($this->avion != null){
+            return ($this->avion->getNbPlace() - count($this->passagers));
+        }
+        else{
+            return "";
+        }
 
+    }
     /**
      * @var
      */

@@ -23,13 +23,15 @@ class DefaultController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 // on récupère tous les vols de ce passager
                 $vols_user = $em->getRepository('MainBundle:Vol')->findVolByPassager($this->getUser());
+                $vols = $em->getRepository('MainBundle:Vol')->findAll($this->getUser());
                 $paginator = $this->get('knp_paginator');
-                $pagination = $paginator->paginate(
-                    $vols_user,
+
+                $pagination_vol = $paginator->paginate(
+                    $vols,
                     $request->query->getInt('page',1),
                     5
                 );
-                return $this->render("MainBundle:Default:dashboard.html.twig",array('pagination'=> $pagination));
+                return $this->render("MainBundle:Default:dashboard.html.twig",array('pagination'=> $vols_user,'pagination_vol'=>$pagination_vol));
             }
             if($this->getUser()->getPilote()){ // nous sommes un pilote
                 $em = $this->getDoctrine()->getManager();
@@ -61,7 +63,7 @@ class DefaultController extends Controller
                 );
                 return $this->render("MainBundle:Default:dashboard.html.twig",array('pagination'=> $pagination,'pilotes'=> $pilotes,'avions' => $avions,'pilotesDispo'=>$pilotesDispo,'avionsDispo'=>$avionsDispo));
             }
-            if($this->getUser()->getResponsable()){ // nous sommes un responsable
+            if($this->getUser()->getResponsable()){ // nous sommes un responsable, différence gestionnaire <=> responsable ??
                 $em = $this->getDoctrine()->getManager();
                 // on récupère tous les vols
                 $vols = $em->getRepository('MainBundle:Vol')->findAll();
