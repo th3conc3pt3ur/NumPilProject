@@ -44,25 +44,4 @@ class VolController extends Controller
             throw $this->createAccessDeniedException("Vous n'êtes pas gestionnaire!");
         }
     }
-    /**
-     * @Route("/vol/{id}", name="affecteAvion")
-     * @Method("POST")
-     */
-    public function affecteAvionAction(Request $request,$id)
-    {
-        if($this->getUser()->getGestionnaire()){ // si on est gestionnaire
-            $em = $this->getDoctrine()->getManager();
-            $vol = $em->getRepository('MainBundle:Vol')->findOneById($id);
-            if($vol){
-                $idpilote = $request->get('idpilote');
-                $vol->setPilote($em->getRepository('UserBundle:User')->findOneById($idpilote));
-                $em->persist($vol);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl("homepage"));
-            }
-        }else{
-            throw $this->createAccessDeniedException("Vous n'êtes pas gestionnaire!");
-        }
-    }
 }
