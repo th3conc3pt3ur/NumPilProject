@@ -23,6 +23,7 @@ MainBundle\Entity\Vol:
             source: true
             title: Départ
             operatorsVisible: false
+            filter: select
         villeArrivee.nom:
             filterable: true
             visible: true
@@ -31,6 +32,7 @@ MainBundle\Entity\Vol:
             source: true
             title: Arrivée
             operatorsVisible: false
+            filter: select
         pilote.username:
             filterable: true
             visible: true
@@ -39,6 +41,7 @@ MainBundle\Entity\Vol:
             source: true
             title: Pilote
             operatorsVisible: false
+            filter: select
         avion.name:
             filterable: true
             visible: true
@@ -47,3 +50,4 @@ MainBundle\Entity\Vol:
             source: true
             title: Avion
             operatorsVisible: false
+            filter: select

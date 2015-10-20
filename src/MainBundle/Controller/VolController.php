@@ -19,22 +19,17 @@ class VolController extends Controller
             $em = $this->getDoctrine()->getManager();
             $vol = $em->getRepository('MainBundle:Vol')->findOneById($id);
             if($vol){
-                if($idpilote != 0){ // si on recu l'info du idpilote
-                    $pilote = $em->getRepository('UserBundle:User')->findOneById($idpilote);
-                    if($pilote != false){
-                        $vol->setPilote($pilote);
-                        $em->persist($vol);
-                        $em->flush();
+                $pilote = $em->getRepository('UserBundle:User')->findOneById($idpilote);
+                if($pilote != false){
+                    $vol->setPilote($pilote);
+                    $em->persist($vol);
+                    $em->flush();
                     }
-                }
-
-                if($idavion != 0){ // si on a recu l'info du idavion
-                    $avion = $em->getRepository('MainBundle:Avion')->findOneById($idavion);
-                    if($avion != false){
-                        $vol->setAvion($avion);
-                        $em->persist($vol);
-                        $em->flush();
-                    }
+                $avion = $em->getRepository('MainBundle:Avion')->findOneById($idavion);
+                if($avion != false){
+                    $vol->setAvion($avion);
+                    $em->persist($vol);
+                    $em->flush();
                 }
                 return $this->redirect($this->generateUrl("homepage"));
             }
