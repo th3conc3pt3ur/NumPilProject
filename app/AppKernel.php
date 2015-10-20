@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new UserBundle\UserBundle(),
             new MainBundle\MainBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new APY\DataGridBundle\APYDataGridBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,49 @@
+MainBundle\Entity\Vol:
+    Source:
+        columns:
+            id: ~
+            villeDepart.nom: ~
+            villeArrivee.nom: ~
+            pilote.username: ~
+            avion.name: ~
+            passagers: ~
+        groupBy: ~
+        filterable: ~
+    Columns:
+        id:
+            filterable: false
+            visible: false
+            id: id
+            title: id
+        villeDepart.nom:
+            filterable: true
+            visible: true
+            id: villeDepart.nom
+            field: villeDepart.nom
+            source: true
+            title: Départ
+            operatorsVisible: false
+        villeArrivee.nom:
+            filterable: true
+            visible: true
+            id: villeArrivee.nom
+            field: villeArrivee.nom
+            source: true
+            title: Arrivée
+            operatorsVisible: false
+        pilote.username:
+            filterable: true
+            visible: true
+            id: pilote.username
+            field: pilote.username
+            source: true
+            title: Pilote
+            operatorsVisible: false
+        avion.name:
+            filterable: true
+            visible: true
+            id: avion.name
+            field: avion.name
+            source: true
+            title: Avion
+            operatorsVisible: false

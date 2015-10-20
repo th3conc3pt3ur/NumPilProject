@@ -10,17 +10,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class VolController extends Controller
 {
     /**
-     * @Route("/vol/{id}", name="affectePiloteAvion")
-     * @Method("POST")
+     * @Route("/vol/{id}/{idpilote}/{idavion}", name="affectePiloteAvion")
+     * @Method("GET")
      */
-    public function affectePiloteAvionAction(Request $request,$id)
+    public function affectePiloteAvionAction(Request $request,$id,$idpilote,$idavion)
     {
         if($this->getUser()->getGestionnaire()){ // si on est gestionnaire
             $em = $this->getDoctrine()->getManager();
             $vol = $em->getRepository('MainBundle:Vol')->findOneById($id);
             if($vol){
-                $idpilote = $request->request->getInt('idpilote');
-                $idavion = $request->request->getInt('idavion');
                 if($idpilote != 0){ // si on recu l'info du idpilote
                     $pilote = $em->getRepository('UserBundle:User')->findOneById($idpilote);
                     if($pilote != false){
@@ -46,7 +44,7 @@ class VolController extends Controller
     }
     /**
      * @Route("/vol/inscription/{id}", name="inscriptionVol")
-     * @Method("POST")
+     * @Method("GET")
      */
     public function inscriptionVol(Request $request,$id){
         $em = $this->getDoctrine()->getManager();

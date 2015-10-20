@@ -1,0 +1,3 @@
+{% if vol.getNbPlaceRestantes != "" and vol.getNbPlaceRestantes > 0 %}
+        <a href="{{ path("inscriptionVol",{"id":vol.id}) }}" class="btn btn-primary">Embarquer !</a>
+{% elseif vol.getNbPlaceRestantes == "" %}Avion non affecté{% endif %}
